@@ -1,17 +1,18 @@
 {
     "manifest_version": 1,
-    "id": "com.github.marc0l92.joplin-plugin-plantUML",
+    "id": "com.github.marc0l92.joplin-plugin-plantUML-i18n",
     "app_min_version": "2.2",
     "version": "1.11.0",
-    "name": "PlantUML2",
-    "description": "Render PlantUML diagram inside your Joplin notes.",
-    "author": "marc0l92",
-    "homepage_url": "https://github.com/marc0l92/joplin-plugin-plantUML#readme",
-    "repository_url": "https://github.com/marc0l92/joplin-plugin-plantUML",
+    "name": "PlantUML2 i18n",
+    "description": "Render PlantUML diagram inside your Joplin notes. (Unofficial test build with translated UI)",
+    "author": "marc0l92, akiratamcat",
+    "homepage_url": "https://github.com/akiratamcat/joplin-plugin-plantUML#readme",
+    "repository_url": "https://github.com/akiratamcat/joplin-plugin-plantUML",
     "keywords": [
         "PlantUML",
         "Diagram",
         "Mindmap",
-        "UML"
+        "UML",
+        "i18n"
     ]
 }

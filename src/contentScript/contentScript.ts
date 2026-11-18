@@ -3,7 +3,7 @@ import crypto = require('crypto')
 import { tmpdir } from 'os'
 import { sep } from 'path'
 
-const diagramsTempDir = `${tmpdir}${sep}joplin-plantUml2-plugin${sep}`
+const diagramsTempDir = `${tmpdir}${sep}joplin-plantUml2-i18n-plugin${sep}`
 
 const fenceNameRegExp = /^plant-?uml$/i
 

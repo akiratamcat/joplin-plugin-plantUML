@@ -14,7 +14,7 @@ const fs = joplin.require('fs-extra')
 
 const Config = {
     MarkdownFenceId: 'plantuml',
-    DiagramsCacheFolder: `${tmpdir}${sep}joplin-plantUml2-plugin${sep}`,
+    DiagramsCacheFolder: `${tmpdir}${sep}joplin-plantUml2-i18n-plugin${sep}`,
 }
 
 const Templates = {
@@ -22,7 +22,7 @@ const Templates = {
 }
 
 const CommandsId = {
-    Fence: 'plantUML-fenceTemplate',
+    Fence: 'plantUML-i18n-fenceTemplate',
 }
 
 function clearDiskCache(): void {
@@ -102,7 +102,7 @@ joplin.plugins.register({
 
         // Register menu
         const commandsSubMenu: MenuItem[] = Object.values(CommandsId).map(command => ({ commandName: command }))
-        await joplin.views.menus.create('menu-plantUML', 'PlantUML', commandsSubMenu, MenuItemLocation.Tools)
+        await joplin.views.menus.create('menu-plantUML-i18n', 'PlantUML', commandsSubMenu, MenuItemLocation.Tools)
 
 
         // Content Scripts

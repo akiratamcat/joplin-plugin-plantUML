@@ -25,7 +25,7 @@ export class Settings {
         renderingType: {
             value: Object.keys(SettingDefaults.RenderingType)[0],
             type: SettingItemType.String,
-            section: 'plantUML.settings',
+            section: 'plantUML-i18n.settings',
             public: true,
             advanced: false,
             isEnum: true,
@@ -36,7 +36,7 @@ export class Settings {
         renderingServer: {
             value: SettingDefaults.RenderingServer,
             type: SettingItemType.String,
-            section: 'plantUML.settings',
+            section: 'plantUML-i18n.settings',
             public: true,
             advanced: false,
             label: 'Rendering: Private server host (optional)',
@@ -45,7 +45,7 @@ export class Settings {
         renderingFormats: {
             value: Object.keys(SettingDefaults.RenderingFormats)[0],
             type: SettingItemType.String,
-            section: 'plantUML.settings',
+            section: 'plantUML-i18n.settings',
             public: true,
             advanced: false,
             isEnum: true,
@@ -56,7 +56,7 @@ export class Settings {
         diagramHeaderFile: {
             value: '',
             type: SettingItemType.String,
-            section: 'plantUML.settings',
+            section: 'plantUML-i18n.settings',
             public: true,
             advanced: false,
             label: 'Diagram: Header file',
@@ -87,7 +87,7 @@ export class Settings {
 
     // Register settings
     async register() {
-        await joplin.settings.registerSection('plantUML.settings', {
+        await joplin.settings.registerSection('plantUML-i18n.settings', {
             label: 'PlantUML',
             iconName: 'fa fa-project-diagram',
             description: 'PlantUML allows you to render UML diagrams using the syntax defined at https://plantuml.com. For more info on the plugin: https://github.com/marc0l92/joplin-plugin-plantUML#readme'
