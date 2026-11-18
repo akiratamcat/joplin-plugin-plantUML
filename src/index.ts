@@ -6,6 +6,7 @@ import { Settings, Diagram } from './settings'
 import { PlantUMLRenderer } from './plantUmlRenderer'
 import { View } from './view'
 import { ObjectsCache } from './objectsCache'
+import { initI18n, _ } from './i18n'
 import { resolve } from 'path'
 import { tmpdir } from 'os'
 import { sep } from 'path'
@@ -70,6 +71,9 @@ function writeTempImage(id: string, content: string, format: string): void {
 
 joplin.plugins.register({
     onStart: async function () {
+        // Must run before any UI string is created (follows Joplin's language setting)
+        await initI18n()
+
         const settings = new Settings()
         const plantUMLRenderer = new PlantUMLRenderer(settings)
         const view = new View(settings)
@@ -93,7 +97,7 @@ joplin.plugins.register({
         // Register command
         await joplin.commands.register({
             name: CommandsId.Fence,
-            label: 'Insert PlantUML block template',
+            label: _('Insert PlantUML block template'),
             iconName: 'fa fa-pencil',
             execute: async () => {
                 await joplin.commands.execute('insertText', Templates.Fence)
@@ -115,6 +119,12 @@ joplin.plugins.register({
         /**
          * Messages handling
          */
+        // Labels used by the content script (it cannot access the Joplin API to translate them itself)
+        const contentScriptLabels = {
+            copyImage: _('Copy image'),
+            copyImageAddress: _('Copy image address'),
+        }
+
         await joplin.contentScripts.onMessage(Config.MarkdownFenceId, async (request: { id: string, content: string }) => {
             // console.log('PlantUML definition:', request.content)
 
@@ -132,7 +142,7 @@ joplin.plugins.register({
             } catch (err) {
                 outputHtml += view.renderError(request.content, err)
             }
-            return outputHtml
+            return { html: outputHtml, labels: contentScriptLabels }
         })
     },
 })

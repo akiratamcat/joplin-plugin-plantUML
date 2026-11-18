@@ -1,3 +1,4 @@
 dist/
 node_modules/
 publish/
+src/locales.generated.ts

@@ -1,4 +1,5 @@
 import { Settings, Diagram } from "./settings"
+import { _ } from "./i18n"
 
 const pngMagicNumbers = Buffer.from('89504e47', 'hex')
 
@@ -33,7 +34,7 @@ export class View {
     renderPng(diagram: Diagram): string {
         console.log('renderPng', diagram, this._settings)
         return `<div class="flex-center">
-                    <img alt="PlantUML Diagram" src="data:image/png;base64,${diagram.blob}" data-url="${diagram.url}" data-image-url="${diagram.imageUrl}" />
+                    <img alt="${_('PlantUML Diagram')}" src="data:image/png;base64,${diagram.blob}" data-url="${diagram.url}" data-image-url="${diagram.imageUrl}" />
                 </div>`
     }
 
@@ -60,6 +61,6 @@ export class View {
 
     renderError(query: string, error: string): string {
         console.log('renderError', query, error)
-        return `<div class="flex-center"><span class="error-icon">X</span><span>PlantUML Error:</span><span>${error}</span></div>`
+        return `<div class="flex-center"><span class="error-icon">X</span><span>${_('PlantUML Error:')}</span><span>${error}</span></div>`
     }
 }

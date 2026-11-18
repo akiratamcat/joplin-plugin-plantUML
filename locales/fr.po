@@ -1,0 +1,89 @@
+# French translation for PlantUML2 i18n (Joplin plugin).
+# This file is distributed under the same license as the plugin (MIT).
+msgid ""
+msgstr ""
+"Project-Id-Version: joplin-plugin-plantuml2-i18n\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/index.ts:100
+msgid "Insert PlantUML block template"
+msgstr "Insérer un modèle de bloc PlantUML"
+
+#: src/index.ts:124
+msgid "Copy image"
+msgstr "Copier l’image"
+
+#: src/index.ts:125
+msgid "Copy image address"
+msgstr "Copier l’adresse de l’image"
+
+#: src/settings.ts:21
+msgid "Official public server"
+msgstr "Serveur public officiel"
+
+#: src/settings.ts:21
+msgid "Private server"
+msgstr "Serveur privé"
+
+#: src/settings.ts:22
+msgid "Vector Image (svg)"
+msgstr "Image vectorielle (svg)"
+
+#: src/settings.ts:22
+msgid "Raster Image (png)"
+msgstr "Image matricielle (png)"
+
+#: src/settings.ts:22
+msgid "AsciiArt (txt)"
+msgstr "Art ASCII (txt)"
+
+#: src/settings.ts:44
+msgid "Rendering: Type"
+msgstr "Rendu : type"
+
+#: src/settings.ts:45
+#, c-format
+msgid "Type of renderer used to parse the PlantUML syntax and create the image. %s: %s ; %s: Host taken from the next option"
+msgstr "Type de moteur de rendu utilisé pour analyser la syntaxe PlantUML et créer l’image. %s : %s ; %s : hôte défini dans l’option suivante"
+
+#: src/settings.ts:53
+msgid "Rendering: Private server host (optional)"
+msgstr "Rendu : hôte du serveur privé (facultatif)"
+
+#: src/settings.ts:54
+#, c-format
+msgid "Private rendering server for plantUML. This server is used only if the Rendering Type is \"%s\""
+msgstr "Serveur de rendu privé pour PlantUML. Ce serveur n’est utilisé que si le type de rendu est « %s »"
+
+#: src/settings.ts:64
+msgid "Rendering: Output image format"
+msgstr "Rendu : format de l’image générée"
+
+#: src/settings.ts:65
+msgid "Type of image format generated while rendering the diagram."
+msgstr "Format d’image généré lors du rendu du diagramme."
+
+#: src/settings.ts:73
+msgid "Diagram: Header file"
+msgstr "Diagramme : fichier d’en-tête"
+
+#: src/settings.ts:74
+msgid "Path to the file containing the diagram header. The content of this file will be injected at the begin of each plantUML diagram in your notes."
+msgstr "Chemin du fichier contenant l’en-tête des diagrammes. Le contenu de ce fichier sera inséré au début de chaque diagramme PlantUML de vos notes."
+
+#: src/settings.ts:107
+#, c-format
+msgid "PlantUML allows you to render UML diagrams using the syntax defined at %s. For more info on the plugin: %s"
+msgstr "PlantUML permet de dessiner des diagrammes UML avec la syntaxe définie sur %s. Plus d’informations sur le plugin : %s"
+
+#: src/view.ts:37
+msgid "PlantUML Diagram"
+msgstr "Diagramme PlantUML"
+
+#: src/view.ts:64
+msgid "PlantUML Error:"
+msgstr "Erreur PlantUML :"

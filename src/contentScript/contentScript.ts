@@ -29,7 +29,7 @@ export default function (context: { contentScriptId: string }) {
                 const pluginRequest = JSON.stringify({ content: token.content, id: diagramId })
 
                 const sendContentToJoplinPlugin = `
-                const diagram = null;
+                let diagram = null;
                 // Configure context menu
                 document.getElementById('plantuml-body-${diagramId}').addEventListener('mousedown', e => {
                     const menu = document.getElementById('plantuml-menu-${diagramId}');
@@ -47,7 +47,11 @@ export default function (context: { contentScriptId: string }) {
 
                 // Send fence content to plugin
                 webviewApi.postMessage('${context.contentScriptId}', ${pluginRequest}).then((response) => {
-                   document.getElementById('plantuml-body-${diagramId}').innerHTML = response;
+                   document.getElementById('plantuml-body-${diagramId}').innerHTML = response.html;
+                   if (response.labels) {
+                       document.getElementById('plantuml-menu-${diagramId}-copyImage').value = response.labels.copyImage;
+                       document.getElementById('plantuml-menu-${diagramId}-copyImageAddress').value = response.labels.copyImageAddress;
+                   }
                    document.getElementById('plantuml-menu-${diagramId}').style = "";
                    diagram = document.querySelector("#plantuml-body-${diagramId}>div>*:first-child");
                 });

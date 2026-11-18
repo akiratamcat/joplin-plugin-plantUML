@@ -1,0 +1,89 @@
+# Japanese translation for PlantUML2 i18n (Joplin plugin).
+# This file is distributed under the same license as the plugin (MIT).
+msgid ""
+msgstr ""
+"Project-Id-Version: joplin-plugin-plantuml2-i18n\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/index.ts:100
+msgid "Insert PlantUML block template"
+msgstr "PlantUML ブロックのテンプレートを挿入"
+
+#: src/index.ts:124
+msgid "Copy image"
+msgstr "画像をコピー"
+
+#: src/index.ts:125
+msgid "Copy image address"
+msgstr "画像のアドレスをコピー"
+
+#: src/settings.ts:21
+msgid "Official public server"
+msgstr "公式の公開サーバー"
+
+#: src/settings.ts:21
+msgid "Private server"
+msgstr "プライベートサーバー"
+
+#: src/settings.ts:22
+msgid "Vector Image (svg)"
+msgstr "ベクター画像 (svg)"
+
+#: src/settings.ts:22
+msgid "Raster Image (png)"
+msgstr "ラスター画像 (png)"
+
+#: src/settings.ts:22
+msgid "AsciiArt (txt)"
+msgstr "アスキーアート (txt)"
+
+#: src/settings.ts:44
+msgid "Rendering: Type"
+msgstr "レンダリング: 種類"
+
+#: src/settings.ts:45
+#, c-format
+msgid "Type of renderer used to parse the PlantUML syntax and create the image. %s: %s ; %s: Host taken from the next option"
+msgstr "PlantUML の構文を解析して画像を作成するレンダラーの種類です。%s: %s ／ %s: 次のオプションで指定したホスト"
+
+#: src/settings.ts:53
+msgid "Rendering: Private server host (optional)"
+msgstr "レンダリング: プライベートサーバーのホスト（任意）"
+
+#: src/settings.ts:54
+#, c-format
+msgid "Private rendering server for plantUML. This server is used only if the Rendering Type is \"%s\""
+msgstr "PlantUML のプライベートなレンダリングサーバーです。このサーバーは、レンダリングの種類が「%s」の場合にのみ使用されます"
+
+#: src/settings.ts:64
+msgid "Rendering: Output image format"
+msgstr "レンダリング: 出力画像の形式"
+
+#: src/settings.ts:65
+msgid "Type of image format generated while rendering the diagram."
+msgstr "ダイアグラムのレンダリング時に生成する画像の形式です。"
+
+#: src/settings.ts:73
+msgid "Diagram: Header file"
+msgstr "ダイアグラム: ヘッダーファイル"
+
+#: src/settings.ts:74
+msgid "Path to the file containing the diagram header. The content of this file will be injected at the begin of each plantUML diagram in your notes."
+msgstr "ダイアグラムのヘッダーを記述したファイルのパスです。このファイルの内容は、ノート内の各 PlantUML ダイアグラムの先頭に挿入されます。"
+
+#: src/settings.ts:107
+#, c-format
+msgid "PlantUML allows you to render UML diagrams using the syntax defined at %s. For more info on the plugin: %s"
+msgstr "PlantUML を使うと、%s で定義された構文で UML ダイアグラムを描画できます。プラグインの詳細: %s"
+
+#: src/view.ts:37
+msgid "PlantUML Diagram"
+msgstr "PlantUML ダイアグラム"
+
+#: src/view.ts:64
+msgid "PlantUML Error:"
+msgstr "PlantUML エラー:"

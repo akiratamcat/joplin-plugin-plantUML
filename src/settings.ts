@@ -1,6 +1,7 @@
 import joplin from 'api'
 import { ChangeEvent } from 'api/JoplinSettings'
 import { SettingItem, SettingItemType } from 'api/types'
+import { _ } from './i18n'
 
 export interface Diagram {
     url: string,
@@ -12,56 +13,67 @@ interface SettingItems {
     [key: string]: SettingItem,
 }
 
+const PluginReadmeUrl = 'https://github.com/akiratamcat/joplin-plugin-plantUML#readme'
+
 export const SettingDefaults = {
     RenderingServer: 'http://www.plantuml.com/plantuml',
-    RenderingType: { public: "Official public server", private: "Private server" },
-    RenderingFormats: { svg: 'Vector Image (svg)', png: 'Raster Image (png)', txt: 'AsciiArt (txt)', },
+    // Option labels are translated in buildConfig() (i18n must be initialized first)
+    RenderingType: () => ({ public: _('Official public server'), private: _('Private server') }),
+    RenderingFormats: () => ({ svg: _('Vector Image (svg)'), png: _('Raster Image (png)'), txt: _('AsciiArt (txt)') }),
 }
+
+const SectionId = 'plantUML-i18n.settings'
 
 export class Settings {
 
-    // Settings definitions
-    private _config: SettingItems = {
-        renderingType: {
-            value: Object.keys(SettingDefaults.RenderingType)[0],
-            type: SettingItemType.String,
-            section: 'plantUML-i18n.settings',
-            public: true,
-            advanced: false,
-            isEnum: true,
-            options: SettingDefaults.RenderingType,
-            label: 'Rendering: Type',
-            description: 'Type of renderer used to parse the PlantUML syntax and create the image. ' + SettingDefaults.RenderingType.public + ': ' + SettingDefaults.RenderingServer + ' ; ' + SettingDefaults.RenderingType.private + ': Host taken from the next option',
-        },
-        renderingServer: {
-            value: SettingDefaults.RenderingServer,
-            type: SettingItemType.String,
-            section: 'plantUML-i18n.settings',
-            public: true,
-            advanced: false,
-            label: 'Rendering: Private server host (optional)',
-            description: 'Private rendering server for plantUML. This server is used only if the Rendering Type is "' + SettingDefaults.RenderingType.private + '"',
-        },
-        renderingFormats: {
-            value: Object.keys(SettingDefaults.RenderingFormats)[0],
-            type: SettingItemType.String,
-            section: 'plantUML-i18n.settings',
-            public: true,
-            advanced: false,
-            isEnum: true,
-            options: SettingDefaults.RenderingFormats,
-            label: 'Rendering: Output image format',
-            description: 'Type of image format generated while rendering the diagram.',
-        },
-        diagramHeaderFile: {
-            value: '',
-            type: SettingItemType.String,
-            section: 'plantUML-i18n.settings',
-            public: true,
-            advanced: false,
-            label: 'Diagram: Header file',
-            description: 'Path to the file containing the diagram header. The content of this file will be injected at the begin of each plantUML diagram in your notes.',
-        },
+    // Settings definitions (built in register() so that labels are translated)
+    private _config: SettingItems = {}
+
+    private buildConfig(): SettingItems {
+        const renderingType = SettingDefaults.RenderingType()
+        const renderingFormats = SettingDefaults.RenderingFormats()
+        return {
+            renderingType: {
+                value: Object.keys(renderingType)[0],
+                type: SettingItemType.String,
+                section: SectionId,
+                public: true,
+                advanced: false,
+                isEnum: true,
+                options: renderingType,
+                label: _('Rendering: Type'),
+                description: _('Type of renderer used to parse the PlantUML syntax and create the image. %s: %s ; %s: Host taken from the next option', renderingType.public, SettingDefaults.RenderingServer, renderingType.private),
+            },
+            renderingServer: {
+                value: SettingDefaults.RenderingServer,
+                type: SettingItemType.String,
+                section: SectionId,
+                public: true,
+                advanced: false,
+                label: _('Rendering: Private server host (optional)'),
+                description: _('Private rendering server for plantUML. This server is used only if the Rendering Type is "%s"', renderingType.private),
+            },
+            renderingFormats: {
+                value: Object.keys(renderingFormats)[0],
+                type: SettingItemType.String,
+                section: SectionId,
+                public: true,
+                advanced: false,
+                isEnum: true,
+                options: renderingFormats,
+                label: _('Rendering: Output image format'),
+                description: _('Type of image format generated while rendering the diagram.'),
+            },
+            diagramHeaderFile: {
+                value: '',
+                type: SettingItemType.String,
+                section: SectionId,
+                public: true,
+                advanced: false,
+                label: _('Diagram: Header file'),
+                description: _('Path to the file containing the diagram header. The content of this file will be injected at the begin of each plantUML diagram in your notes.'),
+            },
+        }
     }
 
     // Checks on the settings
@@ -87,10 +99,12 @@ export class Settings {
 
     // Register settings
     async register() {
-        await joplin.settings.registerSection('plantUML-i18n.settings', {
+        this._config = this.buildConfig()
+
+        await joplin.settings.registerSection(SectionId, {
             label: 'PlantUML',
             iconName: 'fa fa-project-diagram',
-            description: 'PlantUML allows you to render UML diagrams using the syntax defined at https://plantuml.com. For more info on the plugin: https://github.com/marc0l92/joplin-plugin-plantUML#readme'
+            description: _('PlantUML allows you to render UML diagrams using the syntax defined at %s. For more info on the plugin: %s', 'https://plantuml.com', PluginReadmeUrl),
         })
 
         await joplin.settings.registerSettings(this._config)

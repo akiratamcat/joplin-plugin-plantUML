@@ -1,5 +1,38 @@
 # Joplin Plugin - PlantUML2
 
+## About this fork: PlantUML2 i18n (unofficial test build)
+
+**English**
+
+This is a personal, **unofficial test build** of [PlantUML2](https://github.com/marc0l92/joplin-plugin-plantUML) by marc0l92, with a **translated user interface** based on gettext PO files.
+It is not affiliated with or supported by the original author.
+
+- Plugin id: `com.github.marc0l92.joplin-plugin-plantUML-i18n` / name: `PlantUML2 i18n`
+- The UI language follows Joplin's language setting automatically (restart Joplin after changing the language).
+- Supported languages: English (default), Japanese, Chinese (Simplified / Traditional), Korean, German, French, Spanish, Italian, Portuguese (Brazil), Russian.
+- Translations live in [`locales/`](./locales): `plantuml.pot` is the template, `<lang>.po` are the translations.
+  - `npm run i18n:extract` updates the POT from `_('...')` calls in `src/`.
+  - `npm run dist` compiles the PO files and builds the plugin.
+- Because both plugins render ` ```plantuml ` blocks, enable only one of the original plugin and this build at a time.
+- Install it manually from the `.jpl` file attached to the GitHub release (`Tools > Options > Plugins > Install from file`).
+
+**日本語**
+
+これは marc0l92 氏の [PlantUML2](https://github.com/marc0l92/joplin-plugin-plantUML) をもとに、gettext の PO ファイルで **UI を翻訳した個人用の非公式テスト版** です。
+原作者とは無関係で、原作者によるサポートはありません。
+
+- プラグイン ID: `com.github.marc0l92.joplin-plugin-plantUML-i18n` ／ 名称: `PlantUML2 i18n`
+- UI の言語は Joplin の言語設定に自動で合わせます（言語を変更したあとは Joplin を再起動してください）。
+- 対応言語: 英語（既定）、日本語、中国語（簡体字・繁体字）、韓国語、ドイツ語、フランス語、スペイン語、イタリア語、ポルトガル語（ブラジル）、ロシア語
+- 翻訳ファイルは [`locales/`](./locales) にあります。`plantuml.pot` がテンプレート、`<lang>.po` が各言語の翻訳です。
+  - `npm run i18n:extract` で、`src/` の `_('...')` から POT を更新します。
+  - `npm run dist` で PO ファイルを変換し、プラグインをビルドします。
+- どちらのプラグインも ` ```plantuml ` ブロックを描画するため、元のプラグインとこの版は同時に有効にしないでください。
+- GitHub のリリースに添付した `.jpl` ファイルから手動でインストールしてください（`ツール > オプション > プラグイン > ファイルからインストール`）。
+
+---
+
+
 > WARNING: I moved my notes to Obsidian.md and I will not provide additional support to this plugin.
 > Pull request are welcome.
 
